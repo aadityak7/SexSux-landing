@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SexSux | Maintenance</title>
+
+<!-- Fonts & Icons -->
+<link href="https://googleapis.com" rel="stylesheet">
+<link rel="stylesheet" href="https://cloudflare.com">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#0b0f1a;
+  color:white;
+  overflow:hidden;
+}
+
+/* LOADER */
+#loader{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+.loader{
+  width:50px;
+  height:50px;
+  border:5px solid #333;
+  border-top:5px solid cyan;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{
+  100%{transform:rotate(360deg)}
+}
+
+/* BACKGROUND */
+.stars{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:url('https://transparenttextures.com');
+  animation:moveStars 80s linear infinite;
+  z-index:-2;
+}
+@keyframes moveStars{
+  from{background-position:0 0}
+  to{background-position:1200px 1200px}
+}
+
+/* CLOUDS */
+.cloud{
+  position:absolute;
+  width:220px;
+  opacity:0.08;
+  animation:float 70s linear infinite;
+}
+@keyframes float{
+  from{transform:translateX(-200px)}
+  to{transform:translateX(120vw)}
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  perspective:1000px;
+}
+
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.08);
+  padding:40px;
+  border-radius:20px;
+  backdrop-filter:blur(14px);
+  text-align:center;
+  max-width:420px;
+  transition:0.2s;
+  box-shadow:0 0 30px rgba(0,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* LOGO */
+.logo{
+  font-size:36px;
+  font-weight:600;
+  color:cyan;
+  margin-bottom:15px;
+  letter-spacing:2px;
+}
+
+/* MESSAGE */
+.message{
+  font-size:16px;
+  line-height:1.7;
+  opacity:0.9;
+  margin-bottom:20px;
+}
+
+/* CONTACT BUTTON */
+.main-btn{
+  padding:12px 25px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(45deg,cyan,#00f0ff);
+  color:black;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+.main-btn:hover{
+  transform:scale(1.08);
+}
+
+/* CONTACT PANEL */
+.contact{
+  margin-top:15px;
+  display:none;
+  animation:fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin:10px auto;
+  padding:12px;
+  width: 90%;
+  border-radius:10px;
+  text-decoration:none;
+  color:white;
+  background:rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition:0.3s;
+  font-size: 14px;
+}
+.btn i {
+    font-size: 18px;
+}
+.btn:hover{
+  background:rgba(0,255,255,0.15);
+  border-color: cyan;
+  transform: translateY(-2px);
+}
+
+/* BRAND COLORS */
+.fa-envelope-open-text { color: #EA4335; } 
+.fa-telegram { color: #0088cc; }
+
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader"></div>
+</div>
+
+<!-- CLOUDS -->
+<img src="https://pngimg.com" class="cloud" style="top:20%">
+<img src="https://pngimg.com" class="cloud" style="top:65%">
+
+<!-- MAIN -->
+<div class="hero">
+  <div class="card" id="card">
+
+    <div class="logo">SexSux</div>
+
+    <div class="message">
+      The website is temporarily down due to the addition of new functions and APIs.<br><br>
+      Please stay tuned and wait until we come back with a better experience.
+    </div>
+
+    <button class="main-btn" onclick="toggleContact()">Contact Support</button>
+
+    <div class="contact" id="contact">
+      <!-- REDIRECTS TO USERSUPPORTS@DUCK.COM -->
+      <a href="mailto:usersupports@duck.com" class="btn">
+        <i class="fa-solid fa-envelope-open-text"></i> usersupports@duck.com
+      </a>
+      <!-- REDIRECTS TO @SEXYDUCKYS -->
+      <a href="https://t.me" target="_blank" class="btn">
+        <i class="fa-brands fa-telegram"></i> @SexyDuckys
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// LOADER
+setTimeout(()=>{
+  document.getElementById("loader").style.display="none";
+},2000);
+
+// CONTACT TOGGLE
+function toggleContact(){
+  let c=document.getElementById("contact");
+  c.style.display = (c.style.display==="block") ? "none" : "block";
+}
+
+// PARALLAX
+const card=document.getElementById("card");
+document.addEventListener("mousemove",(e)=>{
+  let x=(window.innerWidth/2 - e.clientX)/30;
+  let y=(window.innerHeight/2 - e.clientY)/30;
+  card.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
+});
+</script>
+
+</body>
+</html>
