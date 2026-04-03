@@ -1,220 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sexsux.pw | Upgrading the Galaxy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-glow: #00d4ff;
-            --secondary-glow: #9d00ff;
-            --text-color: #ffffff;
-            --bg-dark: #050505;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SexSux | Maintenance</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-color);
-            overflow: hidden; /* Keeps the universe contained */
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+body{
+  background:#0b0f1a;
+  color:white;
+  overflow:hidden;
+}
 
-        /* --- Universe Background --- */
-        #universe {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
-        }
+/* LOADER */
+#loader{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+.loader{
+  width:50px;
+  height:50px;
+  border:5px solid #333;
+  border-top:5px solid cyan;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{
+  100%{transform:rotate(360deg)}
+}
 
-        /* --- Content Card --- */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            max-width: 600px;
-            width: 90%;
-            box-shadow: 0 0 50px rgba(0, 212, 255, 0.2);
-            animation: float 6s ease-in-out infinite;
-        }
+/* STARS */
+.stars{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:url('https://www.transparenttextures.com/patterns/stardust.png');
+  animation:moveStars 60s linear infinite;
+  z-index:-2;
+}
+@keyframes moveStars{
+  from{background-position:0 0}
+  to{background-position:1000px 1000px}
+}
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
+/* CLOUDS */
+.cloud{
+  position:absolute;
+  width:200px;
+  opacity:0.1;
+  animation:float 60s linear infinite;
+}
+@keyframes float{
+  from{transform:translateX(-200px)}
+  to{transform:translateX(120vw)}
+}
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, var(--primary-glow), var(--secondary-glow));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 2px;
-        }
+/* MAIN */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  perspective:1000px;
+}
 
-        .status-tag {
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 50px;
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--primary-glow);
-            font-weight: bold;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            border: 1px solid var(--primary-glow);
-        }
+.card{
+  background:rgba(255,255,255,0.08);
+  padding:30px;
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+  text-align:center;
+  transition:0.1s;
+}
 
-        p {
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: #ccc;
-        }
+.logo{
+  font-size:32px;
+  color:cyan;
+  margin-bottom:10px;
+}
 
-        /* --- Buttons --- */
-        .btn-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+p{
+  opacity:0.8;
+  margin:10px 0;
+}
 
-        .btn {
-            text-decoration: none;
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
+/* INBOX */
+.inbox{
+  position:absolute;
+  top:20px;
+  right:20px;
+  font-size:26px;
+  cursor:pointer;
+}
 
-        .btn-mail {
-            background: transparent;
-            border: 1px solid var(--primary-glow);
-            color: var(--primary-glow);
-        }
+/* POPUP */
+.popup{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:#111;
+  padding:25px;
+  border-radius:15px;
+  display:none;
+  width:300px;
+  text-align:center;
+}
 
-        .btn-mail:hover {
-            background: var(--primary-glow);
-            color: #000;
-        }
+/* CONTACT */
+.contact{
+  display:none;
+  margin-top:10px;
+}
 
-        .btn-tg {
-            background: #0088cc;
-            color: white;
-        }
+.btn{
+  display:block;
+  margin:8px;
+  padding:10px;
+  border-radius:10px;
+  text-decoration:none;
+  color:white;
+  background:#222;
+}
 
-        .btn-tg:hover {
-            background: #00aaff;
-            transform: scale(1.05);
-        }
-
-        .affiliate-note {
-            margin-top: 25px;
-            font-size: 0.85rem;
-            opacity: 0.7;
-            font-style: italic;
-        }
-
-        /* --- Canvas for Stars --- */
-        #starCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-    </style>
+/* PARALLAX */
+.card:hover{
+  transform:scale(1.02);
+}
+</style>
 </head>
+
 <body>
 
-    <canvas id="starCanvas"></canvas>
+<div class="stars"></div>
 
-    <div class="glass-card">
-        <div class="status-tag">System Upgrade in Progress</div>
-        <h1>SEXSUX.PW</h1>
-        <p>
-            The ultimate cam aggregator is currently evolving. We are adding new features and performance enhancements to provide you with a smoother experience. 
-            <br><br>
-            <strong>Thank you for your patience during this transition.</strong>
-        </p>
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader"></div>
+</div>
 
-        <div class="btn-container">
-            <a href="mailto:enquiry@sexsux.pw" class="btn btn-mail">
-                <i class="fas fa-envelope"></i> enquiry@sexsux.pw
-            </a>
-            <a href="https://t.me/mroydra" class="btn btn-tg" target="_blank">
-                <i class="fab fa-telegram-plane"></i> Contact on Telegram
-            </a>
-        </div>
+<!-- CLOUDS -->
+<img src="https://pngimg.com/uploads/cloud/cloud_PNG27.png" class="cloud" style="top:20%">
+<img src="https://pngimg.com/uploads/cloud/cloud_PNG27.png" class="cloud" style="top:60%">
 
-        <p class="affiliate-note">
-            Affiliates: Interested in a partnership? <br>
-            Connect with us on Telegram for a quick chat.
-        </p>
-    </div>
+<!-- INBOX -->
+<div class="inbox" onclick="openPopup()">📥</div>
 
-    <script>
-        // Starfield Effect
-        const canvas = document.getElementById('starCanvas');
-        const ctx = canvas.getContext('2d');
+<!-- MAIN -->
+<div class="hero">
+  <div class="card" id="card">
+    <div class="logo">SexSux</div>
+    <p><b>View Inbox 📥</b></p>
+    <p>Stay tuned while we upgrade the full system.</p>
+  </div>
+</div>
 
-        let stars = [];
-        let numStars = 400;
-        let speed = 0.5;
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <p>
+    Sorry the site is temporarily down due to upgradation of full site 
+    with addition of new APIs and changes.
+    <br><br>
+    Thanks for your understanding.
+  </p>
 
-        function init() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            stars = [];
-            for (let i = 0; i < numStars; i++) {
-                stars.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 1.5,
-                    opacity: Math.random()
-                });
-            }
-        }
+  <button onclick="showContact()">Contact Me</button>
 
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "white";
-            stars.forEach(star => {
-                ctx.globalAlpha = star.opacity;
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-                ctx.fill();
-                
-                // Move stars slowly to the left
-                star.x -= speed;
-                if (star.x < 0) {
-                    star.x = canvas.width;
-                }
-            });
-            requestAnimationFrame(draw);
-        }
+  <div class="contact" id="contact">
+    <a href="https://t.me/mroydra" target="_blank" class="btn">🚀 Telegram</a>
+    <a href="mailto:enquiry@sexsux.pw" class="btn">📧 Email</a>
+  </div>
+</div>
 
-        window.addEventListener('resize', init);
-        init();
-        draw();
-    </script>
+<!-- AUDIO (notification sound) -->
+<audio id="notifSound">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4c1cfd3a8d.mp3">
+</audio>
+
+<script>
+// LOADER
+setTimeout(()=>{
+  document.getElementById("loader").style.display="none";
+
+  // Show notification popup after load
+  setTimeout(()=>{
+    alert("📩 You got a message from owner\nClick inbox to view it");
+    document.getElementById("notifSound").play();
+  },1000);
+
+},4000);
+
+// POPUP
+function openPopup(){
+  document.getElementById("popup").style.display="block";
+}
+
+function showContact(){
+  document.getElementById("contact").style.display="block";
+}
+
+// PARALLAX
+const card=document.getElementById("card");
+document.addEventListener("mousemove",(e)=>{
+  let x=(window.innerWidth/2 - e.clientX)/30;
+  let y=(window.innerHeight/2 - e.clientY)/30;
+  card.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
+});
+</script>
+
 </body>
-  </html>
+</html>
