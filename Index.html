@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sexsux.pw | Upgrading the Galaxy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-glow: #00d4ff;
+            --secondary-glow: #9d00ff;
+            --text-color: #ffffff;
+            --bg-dark: #050505;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-color);
+            overflow: hidden; /* Keeps the universe contained */
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- Universe Background --- */
+        #universe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+        }
+
+        /* --- Content Card --- */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--primary-glow), var(--secondary-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+
+        .status-tag {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50px;
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary-glow);
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border: 1px solid var(--primary-glow);
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+
+        /* --- Buttons --- */
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-mail {
+            background: transparent;
+            border: 1px solid var(--primary-glow);
+            color: var(--primary-glow);
+        }
+
+        .btn-mail:hover {
+            background: var(--primary-glow);
+            color: #000;
+        }
+
+        .btn-tg {
+            background: #0088cc;
+            color: white;
+        }
+
+        .btn-tg:hover {
+            background: #00aaff;
+            transform: scale(1.05);
+        }
+
+        .affiliate-note {
+            margin-top: 25px;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* --- Canvas for Stars --- */
+        #starCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="starCanvas"></canvas>
+
+    <div class="glass-card">
+        <div class="status-tag">System Upgrade in Progress</div>
+        <h1>SEXSUX.PW</h1>
+        <p>
+            The ultimate cam aggregator is currently evolving. We are adding new features and performance enhancements to provide you with a smoother experience. 
+            <br><br>
+            <strong>Thank you for your patience during this transition.</strong>
+        </p>
+
+        <div class="btn-container">
+            <a href="mailto:enquiry@sexsux.pw" class="btn btn-mail">
+                <i class="fas fa-envelope"></i> enquiry@sexsux.pw
+            </a>
+            <a href="https://t.me/mroydra" class="btn btn-tg" target="_blank">
+                <i class="fab fa-telegram-plane"></i> Contact on Telegram
+            </a>
+        </div>
+
+        <p class="affiliate-note">
+            Affiliates: Interested in a partnership? <br>
+            Connect with us on Telegram for a quick chat.
+        </p>
+    </div>
+
+    <script>
+        // Starfield Effect
+        const canvas = document.getElementById('starCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let stars = [];
+        let numStars = 400;
+        let speed = 0.5;
+
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            stars = [];
+            for (let i = 0; i < numStars; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.5,
+                    opacity: Math.random()
+                });
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "white";
+            stars.forEach(star => {
+                ctx.globalAlpha = star.opacity;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Move stars slowly to the left
+                star.x -= speed;
+                if (star.x < 0) {
+                    star.x = canvas.width;
+                }
+            });
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        draw();
+    </script>
+</body>
+  </html>
