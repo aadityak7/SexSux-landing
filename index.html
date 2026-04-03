@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SexSux | Maintenance</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+
+body{
+  background:#0b0f1a;
+  color:white;
+  overflow:hidden;
+}
+
+/* LOADER */
+#loader{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+.loader{
+  width:50px;
+  height:50px;
+  border:5px solid #333;
+  border-top:5px solid cyan;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{
+  100%{transform:rotate(360deg)}
+}
+
+/* STARS */
+.stars{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:url('https://www.transparenttextures.com/patterns/stardust.png');
+  animation:moveStars 60s linear infinite;
+  z-index:-2;
+}
+@keyframes moveStars{
+  from{background-position:0 0}
+  to{background-position:1000px 1000px}
+}
+
+/* CLOUDS */
+.cloud{
+  position:absolute;
+  width:200px;
+  opacity:0.1;
+  animation:float 60s linear infinite;
+}
+@keyframes float{
+  from{transform:translateX(-200px)}
+  to{transform:translateX(120vw)}
+}
+
+/* MAIN */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  perspective:1000px;
+}
+
+.card{
+  background:rgba(255,255,255,0.08);
+  padding:30px;
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+  text-align:center;
+  transition:0.1s;
+}
+
+.logo{
+  font-size:32px;
+  color:cyan;
+  margin-bottom:10px;
+}
+
+p{
+  opacity:0.8;
+  margin:10px 0;
+}
+
+/* INBOX */
+.inbox{
+  position:absolute;
+  top:20px;
+  right:20px;
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:#111;
+  padding:25px;
+  border-radius:15px;
+  display:none;
+  width:300px;
+  text-align:center;
+}
+
+/* CONTACT */
+.contact{
+  display:none;
+  margin-top:10px;
+}
+
+.btn{
+  display:block;
+  margin:8px;
+  padding:10px;
+  border-radius:10px;
+  text-decoration:none;
+  color:white;
+  background:#222;
+}
+
+/* PARALLAX */
+.card:hover{
+  transform:scale(1.02);
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader"></div>
+</div>
+
+<!-- CLOUDS -->
+<img src="https://pngimg.com/uploads/cloud/cloud_PNG27.png" class="cloud" style="top:20%">
+<img src="https://pngimg.com/uploads/cloud/cloud_PNG27.png" class="cloud" style="top:60%">
+
+<!-- INBOX -->
+<div class="inbox" onclick="openPopup()">📥</div>
+
+<!-- MAIN -->
+<div class="hero">
+  <div class="card" id="card">
+    <div class="logo">SexSux</div>
+    <p><b>View Inbox 📥</b></p>
+    <p>Stay tuned while we upgrade the full system.</p>
+  </div>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <p>
+    Sorry the site is temporarily down due to upgradation of full site 
+    with addition of new APIs and changes.
+    <br><br>
+    Thanks for your understanding.
+  </p>
+
+  <button onclick="showContact()">Contact Me</button>
+
+  <div class="contact" id="contact">
+    <a href="https://t.me/mroydra" target="_blank" class="btn">🚀 Telegram</a>
+    <a href="mailto:enquiry@sexsux.pw" class="btn">📧 Email</a>
+  </div>
+</div>
+
+<!-- AUDIO (notification sound) -->
+<audio id="notifSound">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4c1cfd3a8d.mp3">
+</audio>
+
+<script>
+// LOADER
+setTimeout(()=>{
+  document.getElementById("loader").style.display="none";
+
+  // Show notification popup after load
+  setTimeout(()=>{
+    alert("📩 You got a message from owner\nClick inbox to view it");
+    document.getElementById("notifSound").play();
+  },1000);
+
+},4000);
+
+// POPUP
+function openPopup(){
+  document.getElementById("popup").style.display="block";
+}
+
+function showContact(){
+  document.getElementById("contact").style.display="block";
+}
+
+// PARALLAX
+const card=document.getElementById("card");
+document.addEventListener("mousemove",(e)=>{
+  let x=(window.innerWidth/2 - e.clientX)/30;
+  let y=(window.innerHeight/2 - e.clientY)/30;
+  card.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
+});
+</script>
+
+</body>
+</html>
